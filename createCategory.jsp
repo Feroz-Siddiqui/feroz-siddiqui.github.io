@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Question Category</title>
+<meta charset="utf-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+
+	<!--Add buttons to initiate auth sequence and sign out-->
+	<button id="authorize_button" style="display: none;">Authorize</button>
+	<button id="signout_button" style="display: none;">Sign Out</button>
+	<main class="">
+		<div class="container">
+			<div class="row pt-3">
+				<div class="col-md-6">
+
+					<h2 class="pb-2 border-bottom px-3">Question Category 	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Create
+</button>
+					</h2>
+					<ol class="list-group " id="category_container"></ol>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+	<script type="text/javascript">
+      // Client ID and API key from the Developer Console
+  		var CLIENT_ID = '365180580425-935imcu6vsg6tj5a0unjo7gufr3q3jas.apps.googleusercontent.com';
+		var API_KEY = 'AIzaSyCGCoyovbGF3ZpES1H33DMWS7xlr3BR1PI';
+
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.appdata';
+
+      var authorizeButton = document.getElementById('authorize_button');
+      var signoutButton = document.getElementById('signout_button');
+	  var category_container =  document.getElementById('category_container'); 
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        }, function(error) {
+          console.log(JSON.stringify(error, null, 2));
+        });
+      }
+
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          signoutButton.style.display = 'block';
+          listFiles();
+        } else {
+          authorizeButton.style.display = 'block';
+          signoutButton.style.display = 'none';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+   
+
+      /**
+       * Print files.
+       */
+       
+     
+      
+      
+      function listFiles() {
+    	  listchildren('1TBtxyF6tJEDpDR5bH09A7LxNMr9J8G8U');
+    	  }
+    	
+      
+      
+      	function listchildren(folderid){
+      		
+      	  gapi.client.drive.files.list({
+    	      "includeTeamDriveItems": true,
+    	      "q": "'"+folderid+"' in parents and trashed=false",
+    	      "supportsAllDrives": true
+    	    }).then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+                var files = response.result.files;
+                if (files && files.length > 0) {
+                  for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if(file.mimeType.includes("spreadsheet")){
+                    //console.log(file.name + ' (' + file.id + ')');
+                   // category_container.innerHTML += ('<button type="button" class="btn btn-primary mx-2">   '+file.name+' <span class="badge bg-secondary" onclick="editSignal()"><i class="bi bi-pencil-square"></i></span> <span class="badge bg-secondary" onclick="deletefile(\''+folderid+'\')"><i class="bi bi-trash-fill"></i></span> </button>')
+                    category_container.innerHTML +=' <li class="list-group-item d-flex justify-content-between align-items-start">'
+                   +'<div class="ms-2 me-auto">  <div class="fw-bold">'+file.name+'</div></div>'
+                   +'<span  class="badge badge bg-danger " style="cursor:pointer" onclick=openeditmodal(\''+folderid+'\',\''+file.name+'\',\''+file.id+'\')><i class="bi bi-pencil-square"></i></span>'
+                   +'<span class="badge badge bg-danger mx-2" style="cursor:pointer"  onclick="deletefile(\''+folderid+'\')"><i class="bi bi-trash-fill"></i></span>'
+                   +'   </li>';
+                    
+                    
+                    }
+                    if(file.mimeType.includes("folder")){
+                    	listchildren(file.id)
+                    }
+                  }
+                } else {
+                  console.log('No files found.');
+                }
+              },
+              function(err) { console.error("Execute error", err); });
+      		
+      	}
+      	
+    	  
+    
+        
+        function createFolder(name){
+        	var parentId = '1TBtxyF6tJEDpDR5bH09A7LxNMr9J8G8U';//some parentId of a folder under which to create the new folder
+        	var fileMetadata = {
+        	  'name' : name,
+        	  'mimeType' : 'application/vnd.google-apps.folder',
+        	  'parents': [parentId]
+        	};
+        	gapi.client.drive.files.create({
+        	  resource: fileMetadata,
+        	}).then(function(response) {
+        		console.log(response)
+        		createFile(response.result.id,name)
+        	  switch(response.status){
+        	    case 200:
+        	      var file = response.result;
+        	      console.log('Created Folder Id: ', file.id);
+        	      break;
+        	    default:
+        	      console.log('Error creating the folder, '+response);
+        	      break;
+        	    }
+        	});
+        }
+        
+        
+        function createFile(parentId,name){
+        	var fileMetadata = {
+        	  'name' : name,
+        	  'mimeType' : 'application/vnd.google-apps.spreadsheet',
+        	  'parents': [parentId]
+        	};
+        	gapi.client.drive.files.create({
+        	  resource: fileMetadata,
+        	}).then(function(response) {
+        		console.log(response)
+        	  switch(response.status){
+        	    case 200:
+        	      var file = response.result;
+        	      console.log('Created Folder Id: ', file.id);
+        	      location.reload();
+        	      break;
+        	    default:
+        	      console.log('Error creating the folder, '+response);
+        	      break;
+        	    }
+        	});
+        }
+        
+        
+        function deletefile(id){
+        	console.log(id)
+        	gapi.client.drive.files.delete({
+        	      "fileId": id
+        	    }) .then(function(response) {
+        	                // Handle the results here (response.result has the parsed body).
+        	                console.log("Response", response);
+        	                location.reload()
+        	              },
+        	              function(err) { console.error("Execute error", err); });
+        }
+        
+        
+        function updatefile(id,name){
+        	gapi.client.drive.files.update({
+      	      "fileId": id,
+      	    'name' : name
+      	    }) .then(function(response) {
+      	                // Handle the results here (response.result has the parsed body).
+      	                console.log("Response", response);
+      	              },
+      	              function(err) { console.error("Execute error", err); });
+        	
+        }
+        
+        function createCategory(){
+        	var inputvalue = document.getElementById('category_name').value
+        	if(inputvalue){
+        	    document.getElementById("closemodal").click();
+        		createFolder(inputvalue);
+        		
+
+        	}else{
+        		alert('Enter Category Name');
+        	}
+        }
+        
+        function openeditmodal(folderid,name,fileid){
+        	document.getElementById("saveedit").setAttribute("data-folderid", folderid)
+    	    document.getElementById("saveedit").setAttribute("data-id", fileid)
+    	    document.getElementById("edit_category_name").value=name
+    	    document.getElementById("myeditmodal").click();
+
+        	
+        	
+        }
+        
+        function editCategoryname(){
+        	var filename=document.getElementById("edit_category_name").value;
+			if(filename){
+        	var folderid=document.getElementById("saveedit").getAttribute('data-folderid');
+        	var fileid=document.getElementById("saveedit").getAttribute('data-id');
+        	
+        	updatefile(folderid,filename)
+        	updatefile(fileid,filename)
+        	document.getElementById("close_edit_modal").click();
+        	setTimeout(function(){ location.reload() }, 2000);
+
+			}else{
+				alert('Category name cannot be empty')
+			}
+        	
+
+        }
+
+    </script>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="display:none" id="myeditmodal">
+  Launch demo modal
+</button>
+
+	<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Question Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" id="category_name" placeholder="Enter Category Name" aria-label="default input example">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closemodal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="createCategory()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" id="edit_category_name" placeholder="Enter Category Name" aria-label="default input example">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_edit_modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="editCategoryname()" id="saveedit">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
