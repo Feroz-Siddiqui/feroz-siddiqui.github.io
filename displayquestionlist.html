@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Google Sheets API Quickstart</title>
+<meta charset="utf-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<style>body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}.b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+}</style>
+</head>
+<body>
+<button id="authorize_button" onclick="handleSignInClick()" style="display: none">Sign in</button>
+					<button id="signout_button" onclick="handleSignOutClick()" style="display: none">Sign out</button>
+	<!--Add buttons to initiate auth sequence and sign out-->
+	<main class=" mt-5" id="main">
+<div class="b-example-divider"></div>
+
+		
+
+
+
+	</main>
+
+
+
+
+	<script type="text/javascript">
+	const urlParams = new URLSearchParams(window.location.search);
+	const myParam = urlParams.get('fileid');
+	console.log(myParam)
+		// Client ID and API key from the Developer Console
+		var CLIENT_ID = '365180580425-935imcu6vsg6tj5a0unjo7gufr3q3jas.apps.googleusercontent.com';
+		var API_KEY = 'AIzaSyCGCoyovbGF3ZpES1H33DMWS7xlr3BR1PI';
+
+		// Array of API discovery doc URLs for APIs used by the quickstart
+		var DISCOVERY_DOCS = [ "https://sheets.googleapis.com/$discovery/rest?version=v4" ];
+
+		// Authorization scopes required by the API; multiple scopes can be
+		// included, separated by spaces.
+		var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
+		var authorizeButton = document.getElementById('authorize_button');
+	      var signoutButton = document.getElementById('signout_button');
+		/**
+		 *  On load, called to load the auth2 library and API client library.
+		 */
+		function handleClientLoad() {
+			gapi.load('client:auth2', initClient);
+		}
+
+		/**
+		 *  Initializes the API client library and sets up sign-in state
+		 *  listeners.
+		 */
+		function initClient() {
+			gapi.client.init({
+				apiKey : API_KEY,
+				clientId : CLIENT_ID,
+				discoveryDocs : DISCOVERY_DOCS,
+				scope : SCOPES
+			}).then(function() {
+				// Listen for sign-in state changes.
+				          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+
+				
+
+			}, function(error) {
+				console.log(error)
+			});
+		}
+
+		/**
+		 *  Called when the signed in status changes, to update the UI
+		 *  appropriately. After a sign-in, the API is called.
+		 */
+
+		/**
+		 *  Sign in the user upon button click.
+		 */
+
+		/**
+		 *  Sign out the user upon button click.
+		 */
+
+		/**
+		 * Append a pre element to the body containing the given message
+		 * as its text node. Used to display the results of the API call.
+		 *
+		 * @param {string} message Text to be placed in pre element.
+		 */
+
+		/**
+		 * Print the names and majors of students in a sample spreadsheet:
+		 * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+		 */
+		function listMajors() {
+			gapi.client.sheets.spreadsheets.values.get({
+				spreadsheetId : myParam,
+				range : 'Sheet1',
+			}).then(function(response) {
+				var range = response.result;
+				console.log(range)
+
+				if (range.values.length > 0) {
+					for (i = 0; i < range.values.length; i++) {
+						var row = range.values[i];
+						for (j = 0; j < row.length; j++) {
+						// Print columns A and E, which correspond to indices 0 and 4.
+						
+						if(j==0)
+						var insertHtml='<div class="container-fluid pb-4"> <div class="row"> <div class="col-md-12"> <div class="my-3 p-3 bg-body rounded shadow-sm"> <h6 class="border-bottom pb-2 mb-0"><a href="aa.html?fileid='+myParam+'&range='+(i+1)+'">'+row[j]+'</a></h6>'
+						else{
+							insertHtml+=' <div class="d-flex text-muted pt-3"> <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"> <title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect> <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg> <p class="pb-3 mb-0 small lh-sm border-bottom"> <strong class="d-block text-gray-dark">'+row[j]+'</strong> </p> </div> '
+
+						}
+						/* for(var i=1;i<row.length;i++){
+						} */
+						
+						
+						
+						}
+insertHtml+='</div> </div> </div> </div> <div class="b-example-divider"></div>';
+						
+						
+						document.getElementById("main").innerHTML +=insertHtml
+					}
+				} else {
+					appendPre('No data found.');
+				}
+			}, function(response) {
+				console.log('Error: ' + response.result.error.message);
+			});
+		}
+		 
+		 
+		 function submitData(){
+			 var question = document.getElementById("question").value;
+			 var optiona = document.getElementById("optiona").value;
+			 var optionb = document.getElementById("optionb").value;
+			 var optionc = document.getElementById("optionc").value;
+			 var optiond = document.getElementById("optiond").value;
+			 var optione = document.getElementById("optione").value;
+			 
+			 if(question && optiona && optionb && optionc && optiond){
+				 var values = [
+					 [question,optiona,optionb,optionc,optiond]
+					  // Additional rows ...
+					];
+					var body = {
+					  values: values
+					};
+					gapi.client.sheets.spreadsheets.values.append({
+					   spreadsheetId: myParam,
+					   range:  'Sheet1',
+					   valueInputOption: 'RAW',
+					   resource: body
+					}).then((response) => {
+					  var result = response.result;
+					  console.log(`${result.updatedCells} cells updated.`);
+					});
+				
+				 
+				 
+				 
+				 
+				 
+				
+			 }else{
+				 alert('question with four options are required')
+			 }
+
+			 
+			 
+		 }
+		 
+		 function updateSigninStatus(isSignedIn) {
+			 if (isSignedIn) {
+		          authorizeButton.style.display = 'none';
+		          signoutButton.style.display = 'block';
+		          listMajors();
+		        } else {
+		          authorizeButton.style.display = 'block';
+		          signoutButton.style.display = 'none';
+		        }
+		        
+		 
+		 }
+		 
+		  function handleSignInClick(event) {
+		      gapi.auth2.getAuthInstance().signIn();
+		    }
+
+		    function handleSignOutClick(event) {
+		      gapi.auth2.getAuthInstance().signOut();
+		    }
+	</script>
+
+	<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+		
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>
+<!-- [END sheets_quickstart] -->
