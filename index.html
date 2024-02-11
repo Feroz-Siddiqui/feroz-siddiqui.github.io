@@ -1,272 +1,534 @@
-
-<!doctype html>
-<html lang="en" class="h-100">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.83.1">
-<title>Sticky Footer Navbar Template · Bootstrap v5.0</title>
+<meta charset="utf-8" />
+<title>Color Admin | One Page Parallax Front End Theme</title>
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
 
-<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
-
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-<!-- Bootstrap core CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-icons.css" />
-<link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
-
-<!-- Favicons -->
-<link rel="apple-touch-icon" href="assets/img/fav/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="assets/img/fav/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="assets/img/fav/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="assets/img/fav/site.webmanifest">
-<link rel="mask-icon" href="assets/img/fav/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="assets/img/fav/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-
-
-<!-- Custom styles for this template -->
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+	rel="stylesheet" />
+<link href="assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
+<!-- ================== END BASE CSS STYLE ================== -->
 </head>
-<body class="d-flex flex-column h-100">
-
-	<header id="header" class="fixed-top d-flex align-items-center">
-		<!-- Fixed navbar -->
-		<div class="container d-flex align-items-center justify-content-between">
-
-			<div class="logo">
-				<h1 class="text-light">
-					<a href="index.html"><img src="assets/img/aishalogo.png" alt="" /></a>
-				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-			</div>
-
-			<nav id="navbar" class="navbar">
-				<ul>
-					<li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-					<li class="dropdown"><a href="#"><span>Download</span> <i class="bi bi-chevron-down"></i></a>
-						<ul>
-							<li><a href="#">Drop Down 1</a></li>
-							<li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-								<ul>
-									<li><a href="#">Deep Drop Down 1</a></li>
-									<li><a href="#">Deep Drop Down 2</a></li>
-									<li><a href="#">Deep Drop Down 3</a></li>
-									<li><a href="#">Deep Drop Down 4</a></li>
-									<li><a href="#">Deep Drop Down 5</a></li>
-								</ul></li>
-							<li><a href="#">Drop Down 2</a></li>
-							<li><a href="#">Drop Down 3</a></li>
-							<li><a href="#">Drop Down 4</a></li>
-						</ul></li>
-					<li><a class="nav-link scrollto" href="#services">Exam</a></li>
-					<li><a class="nav-link scrollto" href="#portfolio">Quiz</a></li>
-					<li><a class="nav-link scrollto" href="#team">About</a></li>
-
-					<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-				</ul>
-				<i class="bi bi-list mobile-nav-toggle"></i>
-			</nav>
-			<!-- .navbar -->
-
-		</div>
-	</header>
-
-	<!-- Begin page content -->
-	<main class="flex-shrink-0 mt-5">
-
-		<!-- ======= About Section ======= -->
-		<section id="about" class="about">
+<body data-spy="scroll" data-target="#header" data-offset="51">
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin #header -->
+		<div id="header"
+			class="header navbar navbar-transparent navbar-fixed-top navbar-expand-lg">
+			<!-- begin container -->
 			<div class="container">
-
-				<div class="row justify-content-between">
-				<h3><strong>Aisha Rasheed Website Coming Soon ...... </strong></h3>
-				<p><strong>Aisha</strong> is India’s #1  most trusted educator for Banking Jobs.</p>
-				
+				<!-- begin navbar-brand -->
+				<a href="index.html" class="navbar-brand"> <span
+					class="brand-logo"></span> <!-- Consider adding your logo here -->
+					<span class="brand-text"> <span class="text-primary">Aisha</span>
+						Rasheed
+				</span>
+				</a>
+				<!-- end navbar-brand -->
+				<!-- begin navbar-toggle -->
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#header-navbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<!-- end navbar-header -->
+				<!-- begin navbar-collapse -->
+				<div class="collapse navbar-collapse" id="header-navbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item"><a class="nav-link active" href="#home"
+							data-click="scroll-to-target">HOME</a></li>
+						<li class="nav-item"><a class="nav-link" href="#about"
+							data-click="scroll-to-target">ABOUT</a></li>
+						<li class="nav-item"><a class="nav-link" href="#services"
+							data-click="scroll-to-target">SERVICES</a></li>
+						<li class="nav-item"><a class="nav-link" href="#work"
+							data-click="scroll-to-target">WORK</a></li>
+						<li class="nav-item"><a class="nav-link" href="#testimonials"
+							data-click="scroll-to-target">TESTIMONIALS</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact"
+							data-click="scroll-to-target">CONTACT</a></li>
+					</ul>
 				</div>
-			<!-- 	<div class="row g-0" style="background: #eb5d1e;">
-					<div class="col-md-12">
-						<div class="p-2 text-white fw-bold"><i class="bi bi-megaphone-fill text-white" style="font-size: 24px;margin-left:5px;"></i>
-						Latest Articles</div>
-					
-					</div>
-				
-				</div>
-				<div class="row g-0" style="background: #fbdfd2;min-height:200px;">
-					<div class="col-md-6">
-						<div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div>
-						<div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div>
-						<div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div>
-					
-					
-					</div>
-					<div class="col-md-6">
-					<div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div>
-						<div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div>
-						<div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div><div class="parent mt-2">
-							<div class="row m-0">
-								
-								<div class="col-12">
-								<i class="bi bi-chevron-right" style="font-size: 15px;color:black;"></i>
-								<a class="text-dark w-100" href="welcome.html">test link</a>
-								<p class="px-4">June 4, 2021</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div> -->
+				<!-- end navbar-collapse -->
 			</div>
-		</section>
-	</main>
-<!-- 
-	<footer class="footer mt-auto py-3 bg-light">
-		<div class="container">
-			<span class="text-muted">Place sticky footer content here.</span>
+			<!-- end container -->
 		</div>
-	</footer> -->
+		<!-- end #header -->
 
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+		<!-- begin #home -->
+		<div id="home" class="content has-bg home">
+			<!-- begin content-bg -->
+			<div class="content-bg"
+				style="background-image: url('assets/img/bg/bg-home.jpg');"
+				data-paroller="true" data-paroller-factor="0.5"
+				data-paroller-factor-xs="0.25"></div>
+			<!-- end content-bg -->
+			<!-- begin container -->
+			<div class="container home-content">
+				<h1>Welcome to Aisha Rasheed's Professional World</h1>
+				<h3>Empowering Education & Innovation in EdTech</h3>
+				<p>Dive into the world of innovative education with Aisha
+					Rasheed. Explore my journey of transforming teaching through
+					technology, enhancing student engagement, and leading successful
+					educational events. Join me in this endeavor to redefine learning
+					experiences.</p>
+				<a href="#about" class="btn btn-theme btn-primary">Explore More</a>
+				<a href="#contact" class="btn btn-theme btn-outline-white">Contact
+					Me</a>
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #home -->
 
 
+		<!-- begin #about -->
+		<div id="about" class="content" data-scrollview="true">
+			<!-- begin container -->
+			<div class="container" data-animation="true"
+				data-animation-type="fadeInDown">
+				<h2 class="content-title">About Aisha Rasheed</h2>
+				<p class="content-desc">Embarking on a journey to transform
+					education through technology and innovation, Aisha Rasheed has
+					emerged as a pivotal figure in EdTech, blending traditional
+					teaching methods with the latest digital advancements to enrich
+					learning experiences.</p>
+				<!-- begin row -->
+				<div class="row">
+					<!-- begin col-4 -->
+					<div class="col-md-4 col-sm-12">
+						<!-- begin about -->
+						<div class="about">
+							<h3 class="mb-3">My Story</h3>
+							<p>With a passion for English and a drive for educational
+								excellence, I've dedicated over 9 years to developing engaging,
+								impactful learning environments. My journey has taken me from
+								the classroom to the forefront of online education, where I've
+								harnessed the power of digital platforms to reach students
+								across the globe.</p>
+							<p>My work with renowned EdTech companies like Physicswallah
+								and Unacademy has allowed me to innovate and implement curricula
+								that cater to diverse learning styles, making education
+								accessible and enjoyable for all.</p>
+						</div>
+						<!-- end about -->
+					</div>
+					<!-- end col-4 -->
+					<!-- begin col-4 -->
+					<div class="col-md-4 col-sm-12">
+						<h3 class="mb-3">My Philosophy</h3>
+						<!-- begin about-author -->
+						<div class="about-author">
+							<div class="quote">
+								<i class="fa fa-quote-left"></i>
+								<h3>
+									Empower, Engage, Educate<br />
+									<span>— Transforming Lives Through Learning</span>
+								</h3>
+								<i class="fa fa-quote-right"></i>
+							</div>
+							<div class="info">
+								<p>I believe education should be accessible, engaging, and
+									empowering. My approach integrates interactive learning
+									experiences with comprehensive support, preparing students not
+									just for exams, but for life.</p>
+							</div>
+						</div>
+						<!-- end about-author -->
+					</div>
+					<!-- end col-4 -->
+					<!-- begin col-4 -->
+					<div class="col-md-4 col-sm-12">
+						<h3 class="mb-3">My Experience</h3>
+						<!-- begin skills -->
+						<div class="skills">
+							<p>Over the years, I've honed my skills in ESL teaching,
+								curriculum development, and digital content creation, with a
+								particular focus on leveraging technology to enhance educational
+								outcomes. My efforts have been recognized through numerous
+								awards and accolades, reflecting my commitment to excellence in
+								education.</p>
+						</div>
+						<!-- end skills -->
+					</div>
+					<!-- end col-4 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #about -->
+
+
+		<!-- begin #service -->
+		<div id="service" class="content" data-scrollview="true">
+			<!-- begin container -->
+			<div class="container">
+				<h2 class="content-title">My Services</h2>
+				<p class="content-desc">Leveraging a blend of expertise in ESL
+					teaching, curriculum development, and digital innovation, I offer a
+					range of services designed to elevate educational experiences and
+					outcomes.</p>
+				<!-- begin row -->
+				<div class="row">
+					<!-- begin col-4 -->
+					<div class="col-md-4 col-sm-12">
+						<div class="service">
+							<div class="icon" data-animation="true"
+								data-animation-type="bounceIn">
+								<i class="fa fa-graduation-cap"></i>
+							</div>
+							<div class="info">
+								<h4 class="title">Personalized English Coaching</h4>
+								<p class="desc">Customized lessons tailored to individual
+									learning goals and styles, enhancing language proficiency for
+									various competitive exams and professional needs.</p>
+							</div>
+						</div>
+					</div>
+					<!-- end col-4 -->
+					<!-- begin col-4 -->
+					<div class="col-md-4 col-sm-12">
+						<div class="service">
+							<div class="icon" data-animation="true"
+								data-animation-type="bounceIn">
+								<i class="fa fa-laptop"></i>
+							</div>
+							<div class="info">
+								<h4 class="title">Online Course Development</h4>
+								<p class="desc">Design and implementation of comprehensive
+									online courses, incorporating interactive and multimedia
+									elements to enhance digital learning.</p>
+							</div>
+						</div>
+					</div>
+					<!-- end col-4 -->
+					<!-- begin col-4 -->
+					<div class="col-md-4 col-sm-12">
+						<div class="service">
+							<div class="icon" data-animation="true"
+								data-animation-type="bounceIn">
+								<i class="fa fa-video"></i>
+							</div>
+							<div class="info">
+								<h4 class="title">Digital Content Creation</h4>
+								<p class="desc">Engaging and educational video content
+									creation for platforms like YouTube, designed to make learning
+									accessible and enjoyable.</p>
+							</div>
+						</div>
+					</div>
+					<!-- end col-4 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #service -->
+
+		<!-- begin #work -->
+		<div id="work" class="content" data-scrollview="true">
+			<!-- begin container -->
+			<div class="container" data-animation="true"
+				data-animation-type="fadeInDown">
+				<h2 class="content-title">My Portfolio</h2>
+				<p class="content-desc">A showcase of projects and initiatives
+					that I've led or contributed to, demonstrating my expertise in
+					enhancing educational experiences through technology.</p>
+				<!-- begin row -->
+				<div class="row row-space-10">
+					<!-- begin col-3 -->
+					<div class="col-md-3 col-sm-6">
+						<!-- begin work -->
+						<div class="work">
+							<div class="image">
+								<a href="#"><img src="assets/img/work/work-img-1.jpg"
+									alt="Project 1" /></a>
+							</div>
+							<div class="desc">
+								<span class="desc-title">Innovative ESL Curriculum</span> <span
+									class="desc-text">Development and implementation of an
+									engaging ESL curriculum for Physicswallah Pvt. Ltd, leading to
+									significant improvements in student engagement and learning
+									outcomes.</span>
+							</div>
+						</div>
+						<!-- end work -->
+					</div>
+					<!-- end col-3 -->
+					<!-- begin col-3 -->
+					<div class="col-md-3 col-sm-6">
+						<!-- begin work -->
+						<div class="work">
+							<div class="image">
+								<a href="#"><img src="assets/img/work/work-img-2.jpg"
+									alt="Project 2" /></a>
+							</div>
+							<div class="desc">
+								<span class="desc-title">Educational YouTube Channel</span> <span
+									class="desc-text">Creation of high-engagement
+									educational content, achieving millions of views and enhancing
+									English learning worldwide.</span>
+							</div>
+						</div>
+						<!-- end work -->
+					</div>
+					<!-- end col-3 -->
+					<!-- Additional projects can be added here following the same format -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #work -->
+
+		<!-- begin #testimonials -->
+		<div id="testimonials" class="content bg-black-darker has-bg"
+			data-scrollview="true">
+			<!-- begin content-bg -->
+			<div class="content-bg"
+				style="background-image: url(assets/img/bg/bg-testimonials.jpg)"
+				data-paroller-factor="0.5" data-paroller-factor-md="0.01"
+				data-paroller-factor-xs="0.01"></div>
+			<!-- end content-bg -->
+			<!-- begin container -->
+			<div class="container" data-animation="true"
+				data-animation-type="fadeInUp">
+				<h2 class="content-title">What People Say</h2>
+				<!-- begin carousel -->
+				<div class="carousel testimonials slide" data-ride="carousel"
+					id="testimonials-carousel">
+					<!-- begin carousel-inner -->
+					<div class="carousel-inner text-center">
+						<!-- begin item -->
+						<div class="carousel-item active">
+							<blockquote>
+								<i class="fa fa-quote-left"></i> Aisha's innovative teaching
+								methods and dedication to student success have dramatically
+								improved our learning outcomes. Her passion for education is
+								truly inspiring. <i class="fa fa-quote-right"></i>
+							</blockquote>
+							<div class="name">— John Doe, Student</div>
+						</div>
+						<!-- end item -->
+						<!-- begin item -->
+						<div class="carousel-item">
+							<blockquote style="padding-left: 52px;">
+								<i class="fa fa-quote-left"></i> Collaborating with Aisha on
+								educational content has been a game-changer. Her expertise and
+								creativity bring subjects to life in a way that engages and
+								educates. <i class="fa fa-quote-right"></i>
+							</blockquote>
+							<div class="name">— Jane Smith, Educator</div>
+						</div>
+						<!-- end item -->
+						<!-- Additional testimonials can be added here -->
+					</div>
+					<!-- end carousel-inner -->
+					<!-- begin carousel-indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#testimonials-carousel" data-slide-to="0"
+							class="active"></li>
+						<li data-target="#testimonials-carousel" data-slide-to="1"></li>
+						<!-- Additional indicators for more testimonials -->
+					</ol>
+					<!-- end carousel-indicators -->
+				</div>
+				<!-- end carousel -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #testimonials -->
+
+
+		<!-- begin #contact -->
+		<div id="contact" class="content bg-silver-lighter"
+			data-scrollview="true">
+			<!-- begin container -->
+			<div class="container">
+				<h2 class="content-title">Contact Me</h2>
+				<p class="content-desc">Interested in learning more or have a
+					specific query? Let's connect! Reach out to discuss how we can
+					collaborate or how my services can help achieve your goals.</p>
+				<!-- begin row -->
+				<div class="row">
+					<!-- begin col-6 -->
+					<div class="col-lg-6" data-animation="true"
+						data-animation-type="fadeInLeft">
+						<h3>Get in Touch</h3>
+						<p>Whether you're seeking to enhance your skills, looking for
+							expert advice, or interested in collaboration, I'm here to help.
+							Use the form below or reach out via email or phone.</p>
+						<p>
+							<strong>Email:</strong> aishaoceanic@gmail.com<br> <strong>Phone:</strong>
+							+91-9070838480
+						</p>
+					</div>
+					<!-- end col-6 -->
+					<!-- begin col-6 -->
+					<div class="col-lg-6 form-col" data-animation="true"
+						data-animation-type="fadeInRight">
+						<form class="form-horizontal">
+							<div class="form-group row m-b-15">
+								<label class="col-form-label col-md-3">Name <span
+									class="text-primary">*</span></label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" placeholder="Your Name" />
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-form-label col-md-3">Email <span
+									class="text-primary">*</span></label>
+								<div class="col-md-9">
+									<input type="text" class="form-control"
+										placeholder="Your Email Address" />
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-form-label col-md-3">Message <span
+									class="text-primary">*</span></label>
+								<div class="col-md-9">
+									<textarea class="form-control" rows="10"
+										placeholder="Your Message"></textarea>
+								</div>
+							</div>
+							<div class="form-group row m-b-0">
+								<label class="col-md-3 col-form-label"></label>
+								<div class="col-md-9 text-left">
+									<button type="submit"
+										class="btn btn-theme btn-primary btn-block">Send
+										Message</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- end col-6 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #contact -->
+
+
+		<!-- begin #footer -->
+		<div id="footer" class="footer">
+			<div class="container">
+				<div class="footer-brand">
+					<div class="footer-brand-logo"></div>
+					<!-- You can insert your logo here -->
+					Aisha Rasheed
+				</div>
+				<p>
+    &copy; Copyright <span id="copyright-year">2023</span> Aisha Rasheed <br />
+    Elevating educational experiences through innovation and dedication.
+</p>
+
+
+				<p class="social-list">
+					<a href="https://www.facebook.com/aisharasheedenglishguru"><i class="fab fa-facebook-f fa-fw"></i></a> <a href="https://www.instagram.com/aisha_english_faculty/"><i
+						class="fab fa-instagram fa-fw"></i></a> <a href="#"><i
+						class="fab fa-twitter fa-fw"></i></a> <a href="#"><i
+						class="fab fa-google-plus-g fa-fw"></i></a> <a href="#"><i
+						class="fab fa-dribbble fa-fw"></i></a>
+				</p>
+			</div>
+		</div>
+		<!-- end #footer -->
+
+		<!-- begin theme-panel -->
+		<div class="theme-panel">
+			<a href="javascript:;" data-click="theme-panel-expand"
+				class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+			<div class="theme-panel-content">
+				<ul class="theme-list clearfix">
+					<li><a href="javascript:;" class="bg-red" data-theme="red"
+						data-theme-file="assets/css/one-page-parallax/theme/red.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Red"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-pink" data-theme="pink"
+						data-theme-file="assets/css/one-page-parallax/theme/pink.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Pink"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-orange"
+						data-theme="orange"
+						data-theme-file="assets/css/one-page-parallax/theme/orange.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Orange"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-yellow"
+						data-theme="yellow"
+						data-theme-file="assets/css/one-page-parallax/theme/yellow.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Yellow"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-lime" data-theme="lime"
+						data-theme-file="assets/css/one-page-parallax/theme/lime.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Lime"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-green" data-theme="green"
+						data-theme-file="assets/css/one-page-parallax/theme/green.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Green"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li class="active"><a href="javascript:;" class="bg-teal"
+						data-theme-file="assets/css/one-page-parallax/theme/teal.min.css"
+						data-theme="default" data-click="theme-selector"
+						data-toggle="tooltip" data-trigger="hover" data-container="body"
+						data-title="Default" data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-aqua" data-theme="aqua"
+						data-theme-file="assets/css/one-page-parallax/theme/aqua.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Aqua"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-blue" data-theme="blue"
+						data-theme-file="assets/css/one-page-parallax/theme/blue.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Blue"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-purple"
+						data-theme="purple"
+						data-theme-file="assets/css/one-page-parallax/theme/purple.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Purple"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-indigo"
+						data-theme="indigo"
+						data-theme-file="assets/css/one-page-parallax/theme/indigo.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Indigo"
+						data-original-title="" title="">&nbsp;</a></li>
+					<li><a href="javascript:;" class="bg-black" data-theme="black"
+						data-theme-file="assets/css/one-page-parallax/theme/black.min.css"
+						data-click="theme-selector" data-toggle="tooltip"
+						data-trigger="hover" data-container="body" data-title="Black"
+						data-original-title="" title="">&nbsp;</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- end theme-panel -->
+	</div>
+	<!-- end #page-container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="assets/js/one-page-parallax/app.min.js"></script>
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentYear = new Date().getFullYear();
+        document.getElementById('copyright-year').textContent = currentYear;
+    });
+</script>
+	
+	<!-- ================== END BASE JS ================== -->
 </body>
 </html>
