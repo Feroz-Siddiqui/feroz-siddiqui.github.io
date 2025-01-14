@@ -3,7 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aisha Rasheed - English Educator</title>
+    <title>
+      Aisha Rasheed - Expert English Educator & Digital Learning Specialist
+    </title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Expert English education with Aisha Rasheed. Personalized coaching, online courses, and exam preparation. Transform your English learning journey with innovative digital approaches."
+    />
+    <meta
+      name="keywords"
+      content="English educator, English teaching, online English courses, English tutor, ESL, digital learning, exam preparation, English coaching"
+    />
+    <meta name="author" content="Aisha Rasheed" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Aisha Rasheed - Expert English Educator"
+    />
+    <meta
+      property="og:description"
+      content="Transform your English learning journey with personalized coaching and innovative digital approaches."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://feroz-siddiqui.github.io/" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Aisha Rasheed - Expert English Educator"
+    />
+    <meta
+      name="twitter:description"
+      content="Transform your English learning journey with personalized coaching and innovative digital approaches."
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://feroz-siddiqui.github.io/" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -554,7 +593,14 @@
       </div>
     </footer>
 
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
+      // Initialize EmailJS
+      (function () {
+        emailjs.init("8uVRVBEfWFcoPq_-j");
+      })();
+
       // Update year
       document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -587,12 +633,38 @@
         });
       });
 
-      // Form submission
+      // Form submission with EmailJS
       const form = document.querySelector(".contact-form");
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Thank you for your message. I will get back to you soon!");
-        form.reset();
+
+        const btn = form.querySelector("button[type=submit]");
+        const originalText = btn.textContent;
+        btn.textContent = "Sending...";
+        btn.disabled = true;
+
+        const templateParams = {
+          from_name: form.querySelector("#name").value,
+          from_email: form.querySelector("#email").value,
+          message: form.querySelector("#message").value,
+          to_name: "Aisha Rasheed",
+          reply_to: form.querySelector("#email").value,
+        };
+
+        emailjs
+          .send("service_8aj5elf", "template_98obmgi", templateParams)
+          .then(() => {
+            alert("Thank you for your message. I will get back to you soon!");
+            form.reset();
+            btn.textContent = originalText;
+            btn.disabled = false;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Oops! Something went wrong. Please try again later.");
+            btn.textContent = originalText;
+            btn.disabled = false;
+          });
       });
     </script>
   </body>
