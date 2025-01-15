@@ -6,6 +6,8 @@
     <title>Aisha Rasheed - English Educator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -28,10 +30,11 @@
             ring: 1px solid #f43f5e;
         }
         .feature-card {
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
         }
         .timeline-item {
             position: relative;
@@ -56,6 +59,72 @@
             height: calc(100% - 12px);
             background: #e5e7eb;
         }
+        
+        /* Animation classes */
+        .slide-up {
+            animation: slideUp 0.6s ease-out;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .scale-in {
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hover animations */
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body>
@@ -63,32 +132,55 @@
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-bold text-rose-500">AR</a>
+                <a href="#home" class="text-2xl font-bold text-rose-500 hover-scale">AR</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-rose-500">Home</a>
-                    <a href="#about" class="hover:text-rose-500">About</a>
-                    <a href="#experience" class="hover:text-rose-500">Experience</a>
-                    <a href="#exams" class="hover:text-rose-500">Exams</a>
-                    <a href="#features" class="hover:text-rose-500">Features</a>
-                    <a href="#connect" class="hover:text-rose-500">Connect</a>
+                    <a href="#home" class="hover:text-rose-500 hover-lift">Home</a>
+                    <a href="#about" class="hover:text-rose-500 hover-lift">About</a>
+                    <a href="#experience" class="hover:text-rose-500 hover-lift">Experience</a>
+                    <a href="#exams" class="hover:text-rose-500 hover-lift">Exams</a>
+                    <a href="#features" class="hover:text-rose-500 hover-lift">Features</a>
+                    <a href="#connect" class="hover:text-rose-500 hover-lift">Connect</a>
                 </div>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 mobile-menu md:hidden" id="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold text-rose-500">AR</span>
+                <button id="close-menu">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="hover:text-rose-500">Home</a>
+                <a href="#about" class="hover:text-rose-500">About</a>
+                <a href="#experience" class="hover:text-rose-500">Experience</a>
+                <a href="#exams" class="hover:text-rose-500">Exams</a>
+                <a href="#features" class="hover:text-rose-500">Features</a>
+                <a href="#connect" class="hover:text-rose-500">Connect</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-center text-white pt-16">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-6" data-aos="fade-up" data-aos-duration="1000">
             <h1 class="text-5xl md:text-6xl font-bold mb-4">Hi, I'm Aisha Rasheed</h1>
             <p class="text-xl mb-4">English Educator & Digital Instruction Expert</p>
             <p class="text-lg mb-8 max-w-2xl mx-auto">
                 With 9+ years of experience in the EdTech industry, I specialize in competitive exam preparation, helping students master English for UPSC, Banking, SSC, and more.
             </p>
             <div class="flex gap-4 justify-center">
-                <button class="bg-white text-gray-800 px-6 py-3 rounded-full hover:bg-opacity-90">
+                <button class="bg-white text-gray-800 px-6 py-3 rounded-full hover:bg-opacity-90 hover-lift">
                     Start Free Trial
                 </button>
-                <button class="border-2 border-white px-6 py-3 rounded-full hover:bg-white/10">
+                <button class="border-2 border-white px-6 py-3 rounded-full hover:bg-white/10 hover-lift">
                     Watch Demo Class
                 </button>
             </div>
@@ -98,29 +190,31 @@
     <!-- About Section -->
     <section id="about" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-8">About Me</h2>
-            <div class="max-w-3xl">
-                <p class="text-gray-600 mb-6">
-                    I'm a dedicated English educator with over 9 years of comprehensive professional experience, specializing in preparing students for competitive exams such as Bank/SSC. As a YouTube Content Creator, I've achieved millions of views on live video teachings, combining traditional teaching methods with innovative digital approaches.
-                </p>
-                <p class="text-gray-600 mb-12">
-                    My expertise spans across ESL teaching, curriculum development, personalized coaching, and digital content creation. I'm passionate about helping students not only clear their exams but also develop strong communication skills for their future careers.
-                </p>
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div data-aos="fade-right" data-aos-delay="200">
+                    <p class="text-gray-600 mb-6">
+                        I'm a dedicated English educator with over 9 years of comprehensive professional experience, specializing in preparing students for competitive exams such as Bank/SSC. As a YouTube Content Creator, I've achieved millions of views on live video teachings, combining traditional teaching methods with innovative digital approaches.
+                    </p>
+                    <p class="text-gray-600">
+                        My expertise spans across ESL teaching, curriculum development, personalized coaching, and digital content creation. I'm passionate about helping students not only clear their exams but also develop strong communication skills for their future careers.
+                    </p>
+                </div>
 
-                <div class="grid grid-cols-4 gap-8 text-center">
-                    <div>
+                <div class="grid grid-cols-2 gap-8" data-aos="fade-left" data-aos-delay="400">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
                         <div class="text-3xl font-bold text-rose-500">9+</div>
                         <div class="text-gray-600">Years Teaching</div>
                     </div>
-                    <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
                         <div class="text-3xl font-bold text-rose-500">1M+</div>
                         <div class="text-gray-600">Online Students</div>
                     </div>
-                    <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
                         <div class="text-3xl font-bold text-rose-500">85%</div>
                         <div class="text-gray-600">Success Rate</div>
                     </div>
-                    <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover-lift">
                         <div class="text-3xl font-bold text-rose-500">50K+</div>
                         <div class="text-gray-600">Exams Cleared</div>
                     </div>
@@ -132,24 +226,22 @@
     <!-- Experience Section -->
     <section id="experience" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">Professional Journey</h2>
-            <div class="max-w-3xl mx-auto space-y-8">
-                <div class="timeline-item pb-8">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Work Experience</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="font-bold text-xl">Professor at Physicswallah Pvt. Ltd</h3>
-                    <p class="text-gray-500 text-sm mb-2">July 2023 - Present</p>
-                    <p class="text-gray-600">Leading ESL curriculum development and implementation, creating engaging online content, and pioneering virtual classroom techniques.</p>
+                    <p class="text-gray-600 text-sm mb-2">Jul 2023 - Present</p>
+                    <p class="text-gray-600">Leading innovative ESL curriculum development and implementation, achieving high engagement through multimedia content creation.</p>
                 </div>
-
-                <div class="timeline-item pb-8">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <h3 class="font-bold text-xl">English Faculty at Exampur</h3>
-                    <p class="text-gray-500 text-sm mb-2">July 2021 - June 2023</p>
-                    <p class="text-gray-600">Developed ESL teaching strategies, produced viral educational content, and conducted mock interviews and spoken English sessions.</p>
+                    <p class="text-gray-600 text-sm mb-2">Jul 2021 - June 2023</p>
+                    <p class="text-gray-600">Developed effective ESL strategies and produced high-engagement educational content for diverse student demographics.</p>
                 </div>
-
-                <div class="timeline-item pb-8">
-                    <h3 class="font-bold text-xl">Senior Educator at Wifi Study (Unacademy)</h3>
-                    <p class="text-gray-500 text-sm mb-2">June 2020 - June 2021</p>
-                    <p class="text-gray-600">Delivered specialized ESL courses and led teacher training initiatives, enhancing student performance in competitive exams.</p>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-bold text-xl">Senior Educator at Unacademy</h3>
+                    <p class="text-gray-600 text-sm mb-2">June 2020 - June 2021</p>
+                    <p class="text-gray-600">Delivered specialized ESL courses and led teacher training initiatives for competitive exam preparation.</p>
                 </div>
             </div>
         </div>
@@ -158,13 +250,13 @@
     <!-- Exam Categories Section -->
     <section id="exams" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-4 text-center">Competitive Exam Categories</h2>
-            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center" data-aos="fade-up">Competitive Exam Categories</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
                 Comprehensive English preparation for all major competitive exams in India
             </p>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="award" class="w-8 h-8 text-rose-500"></i>
                     </div>
@@ -185,7 +277,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="book-open" class="w-8 h-8 text-rose-500"></i>
                     </div>
@@ -206,7 +298,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="target" class="w-8 h-8 text-rose-500"></i>
                     </div>
@@ -233,9 +325,9 @@
     <!-- Features Section -->
     <section id="features" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">How I Can Help You</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">How I Can Help You</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="graduation-cap" class="w-8 h-8 text-rose-500"></i>
                     </div>
@@ -248,7 +340,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="video" class="w-8 h-8 text-rose-500"></i>
                     </div>
@@ -261,7 +353,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-lg shadow-md feature-card">
+                <div class="feature-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="message-circle" class="w-8 h-8 text-rose-500"></i>
                     </div>
@@ -277,29 +369,87 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="connect" class="py-20">
+    <!-- Success Stories Section -->
+    <section class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-8 text-center">Let's Connect</h2>
-            <div class="max-w-xl mx-auto">
-                <p class="text-gray-600 mb-8 text-center">
-                    Ready to start your exam preparation journey? Get in touch to learn about our courses and success strategies.
-                </p>
-                <div class="flex flex-col md:flex-row justify-between mb-8">
-                    <div class="flex items-center gap-2 mb-4 md:mb-0">
-                        <i data-lucide="phone" class="w-5 h-5 text-rose-500"></i>
-                        <span>+91-9070838480</span>
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Success Stories</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="users" class="w-6 h-6 text-rose-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Priya Sharma</h4>
+                            <p class="text-sm text-gray-600">UPSC CSE 2023</p>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 mb-4 md:mb-0">
-                        <i data-lucide="mail" class="w-5 h-5 text-rose-500"></i>
-                        <span>aishaoceanic@gmail.com</span>
+                    <p class="text-gray-600">"The English strategy classes were game-changing. Cleared the Mains with 160+ in English."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="users" class="w-6 h-6 text-rose-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rahul Kumar</h4>
+                            <p class="text-sm text-gray-600">SBI PO 2023</p>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-rose-500"></i>
-                        <span>Bengaluru, Karnataka</span>
+                    <p class="text-gray-600">"From struggling with English to scoring 35+ in every mock test. The techniques really work!"</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="users" class="w-6 h-6 text-rose-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Anjali Patel</h4>
+                            <p class="text-sm text-gray-600">SSC CGL 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The vocabulary building methods and error spotting tricks helped me secure a top rank."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="connect" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Let's Connect</h2>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div data-aos="fade-right">
+                    <p class="mb-6">Ready to start your exam preparation journey? Get in touch to learn about our courses and success strategies.</p>
+                    <div class="space-y-4">
+                        <p class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-5 h-5 text-rose-500"></i>
+                            aishaoceanic@gmail.com
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-5 h-5 text-rose-500"></i>
+                            +91-9070838480
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-rose-500"></i>
+                            Bengaluru, Karnataka
+                        </p>
+                        <div class="flex gap-4 mt-6">
+                            <a href="#" class="text-gray-600 hover:text-rose-500 hover-scale">
+                                <i data-lucide="youtube" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-rose-500 hover-scale">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-rose-500 hover-scale">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <form class="space-y-4">
+                <form class="space-y-4" data-aos="fade-left">
                     <input
                         type="text"
                         placeholder="Your Name"
@@ -323,7 +473,7 @@
                         rows="4"
                         class="input-style"
                     ></textarea>
-                    <button type="submit" class="w-full bg-rose-500 text-white py-3 rounded-md hover:bg-rose-600 transition-colors">
+                    <button class="w-full bg-rose-500 text-white py-3 rounded-md hover:bg-rose-600 transition-colors hover-lift">
                         Send Message
                     </button>
                 </form>
@@ -335,13 +485,13 @@
     <footer class="bg-gray-900 text-white py-6">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" class="text-gray-400 hover:text-white">
+                <a href="#" class="text-gray-400 hover:text-white hover-scale">
                     <i data-lucide="youtube" class="w-5 h-5"></i>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-white">
+                <a href="#" class="text-gray-400 hover:text-white hover-scale">
                     <i data-lucide="instagram" class="w-5 h-5"></i>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-white">
+                <a href="#" class="text-gray-400 hover:text-white hover-scale">
                     <i data-lucide="linkedin" class="w-5 h-5"></i>
                 </a>
             </div>
@@ -353,8 +503,45 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Add smooth scrolling behavior to the entire document
-        document.documentElement.style.scrollBehavior = 'smooth';
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('active');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking a link
+        Array.from(mobileMenuLinks).forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
