@@ -480,22 +480,23 @@
                         </div>
                     </div>
                 </div>
-                <form class="space-y-4" data-aos="fade-left">
-                    <input type="text" placeholder="Your Name" class="input-style">
-                    <input type="email" placeholder="Your Email" class="input-style">
-                    <select class="input-style text-gray-600">
-                        <option value="">Select Exam Category</option>
-                        <option value="upsc">UPSC Civil Services</option>
-                        <option value="banking">Banking Exams</option>
-                        <option value="ssc">SSC Exams</option>
-                        <option value="teaching">Teaching Exams</option>
-                        <option value="other">Other Exams</option>
-                    </select>
-                    <textarea placeholder="Your Message" rows="4" class="input-style"></textarea>
-                    <button type="submit" class="w-full btn-primary py-3 rounded-md">
-                        Send Message
-                    </button>
-                </form>
+                <!-- Replace the existing form in the contact section with: -->
+<form id="contactForm" class="space-y-4" data-aos="fade-left">
+    <input type="text" id="name" placeholder="Your Name" class="input-style" required>
+    <input type="email" id="email" placeholder="Your Email" class="input-style" required>
+    <select id="examCategory" class="input-style text-gray-600" required>
+        <option value="">Select Exam Category</option>
+        <option value="upsc">UPSC Civil Services</option>
+        <option value="banking">Banking Exams</option>
+        <option value="ssc">SSC Exams</option>
+        <option value="teaching">Teaching Exams</option>
+        <option value="other">Other Exams</option>
+    </select>
+    <textarea id="message" placeholder="Your Message" rows="4" class="input-style" required></textarea>
+    <button type="submit" id="submitBtn" class="w-full btn-primary py-3 rounded-md">
+        Send Message
+    </button>
+</form>
             </div>
         </div>
     </section>
