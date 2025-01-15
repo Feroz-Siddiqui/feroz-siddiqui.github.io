@@ -44,6 +44,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -517,6 +519,11 @@
     </footer>
 
     <script>
+
+// Initialize EmailJS
+      (function () {
+        emailjs.init("8uVRVBEfWFcoPq_-j");
+      })();
         // Initialize AOS
         AOS.init({
             duration: 1000,
@@ -546,6 +553,42 @@
                 navbar.classList.remove('shadow-md');
             }
         });
+
+  // Form submission handling
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        const templateParams = {
+            from_name: form.querySelector("#name").value,
+            from_email: form.querySelector("#email").value,
+            exam_category: form.querySelector("#examCategory").value,
+            message: form.querySelector("#message").value,
+            to_name: "Aisha Rasheed",
+            reply_to: form.querySelector("#email").value,
+        };
+
+        emailjs
+            .send("service_8aj5elf", "template_98obmgi", templateParams)
+            .then(() => {
+                alert("Thank you for your message. I will get back to you soon!");
+                form.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Oops! Something went wrong. Please try again later.");
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
+    });
     </script>
 </body>
 </html>
