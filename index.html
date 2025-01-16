@@ -694,5 +694,41 @@
             });
     });
     </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JB1FYQ5W2F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JB1FYQ5W2F', {
+    'cookie_domain': 'aisharasheed.com',
+    'cookie_flags': 'SameSite=None;Secure',
+    'send_page_view': true,
+    'page_title': document.title,
+    'page_location': window.location.href
+  });
+
+  // Optional: Track custom events
+  function trackCustomEvent(eventName, parameters) {
+    gtag('event', eventName, parameters);
+  }
+
+  // Optional: Track user engagement
+  gtag('config', 'G-JB1FYQ5W2F', {
+    'user_engagement': true
+  });
+
+  // Optional: Enhanced measurement
+  gtag('config', 'G-JB1FYQ5W2F', {
+    'enhanced_measurement': {
+      'page_view': true,
+      'scroll': true,
+      'outbound_click': true,
+      'site_search': true
+    }
+  });
+</script>
 </body>
 </html>
